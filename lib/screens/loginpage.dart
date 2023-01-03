@@ -55,13 +55,13 @@ class _LoginFormState extends State<LoginForm> {
     }
   }
 
-  Future setSP(UserModel user) async {
+  Future setSP(user user1) async {
     final SharedPreferences sp = await _pref;
 
-    sp.setString("user_id", user.user_id);
-    sp.setString("user_name", user.user_name);
-    sp.setString("email", user.email);
-    sp.setString("password", user.password);
+    sp.setString("user_id", user1.user_id);
+    sp.setString("user_name", user1.user_name);
+    sp.setString("email", user1.email);
+    sp.setString("password", user1.password);
   }
 
   @override

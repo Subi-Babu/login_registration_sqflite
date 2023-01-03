@@ -16,7 +16,7 @@ class _HomeFormState extends State<HomeForm> {
   final _formKey = new GlobalKey<FormState>();
   Future<SharedPreferences> _pref = SharedPreferences.getInstance();
 
-  Dbhelp dbHelper;
+  late DbHelper dbHelper;
   final _conUserId = TextEditingController();
   final _conDelUserId = TextEditingController();
   final _conUserName = TextEditingController();
@@ -53,11 +53,11 @@ class _HomeFormState extends State<HomeForm> {
       _formKey.currentState!.save();
 
       user user1 = user(uid, uname, email, passwd);
-      await dbHelper.updateUser(user).then((value) {
+      await dbHelper.updateUser(user1).then((value) {
         if (value == 1) {
           alertDialog(context, "Successfully Updated");
 
-          updateSP(user, true).whenComplete(() {
+          updateSP(user1, true).whenComplete(() {
             Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (_) => LoginForm()),
